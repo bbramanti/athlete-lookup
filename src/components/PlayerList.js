@@ -25,7 +25,7 @@ class PlayerList extends React.Component {
 				else {
 					console.log(data.player);
 					this.setState({
-	              		players: data.player.slice(0,10),
+	              		players: data.player.slice(0,20),
 						emptyResults: false
 	            	})
 				}
@@ -40,7 +40,7 @@ class PlayerList extends React.Component {
           {this.state.players.map(player => {
             return (
               <div className="player" key={player.idPlayer}>
-			  	<div className="player-item">
+			  	<div className="player-image">
 					{player.strThumb === null ? <img src={person} alt="person"/> : <img src={player.strThumb} alt="player thumbnail"/> }
 			  	</div>
                 <div className="player-item">

@@ -20,52 +20,49 @@ class PlayerList extends React.Component {
 					console.log("query found 0 results");
 					this.setState({
 	              		emptyResults: true
-	            	})
+	            	});
 				}
-				else {
+				else{
 					console.log(data.player);
 					this.setState({
-	              		players: data.player.slice(0,20),
+	              		players: data.player.slice(0,18),
 						emptyResults: false
-	            	})
+	            	});
 				}
           	});
   		}
   	}
 
   	render() {
-    if (this.props.query && this.state.emptyResults === false) {
-      return (
-        <div className="player-list">
-          {this.state.players.map(player => {
-            return (
-              <div className="player" key={player.idPlayer}>
-			  	<div className="player-image">
-					{player.strThumb === null ? <img src={person} alt="person"/> : <img src={player.strThumb} alt="player thumbnail"/> }
-			  	</div>
-                <div className="player-item">
-                  {player.strPlayer === "" ? <p>N/A</p> : <p>{player.strPlayer}</p> }
-                </div>
-				<div className="player-item">
-                  {player.strSport === "" ? <p>N/A</p> : <p>{player.strSport}</p> }
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-	else if (this.props.query && this.state.emptyResults === true) {
-		return (
-			<div className="player-list">
-				<p>zero players match your search</p>
-			</div>
-		);
+    	if (this.props.query && this.state.emptyResults === false) {
+      		return (
+        		<div className="player-list">
+          			{this.state.players.map(player => {
+            			return (
+              				<div className="player" key={player.idPlayer}>
+			  					<div className="player-image">
+									{player.strThumb === null ? <img src={person} alt="person"/> : <img src={player.strThumb} alt="player thumbnail"/> }
+			  					</div>
+                				<div className="player-name">
+                  					{player.strPlayer === "" ? <p>N/A</p> : <p>{player.strPlayer}</p> }
+                				</div>
+              				</div>
+            			);
+          			})}
+        		</div>
+      		);
+		}
+		else if (this.props.query && this.state.emptyResults === true) {
+			return (
+				<div className="player-list">
+					<p>zero players match your search</p>
+				</div>
+			);
+		}
+    	else {
+      		return <div className="player-list"/>;
+    	}
 	}
-    else {
-      return <div className="player-list"/>;
-    }
-  }
 }
 
 export default PlayerList;

@@ -14,11 +14,15 @@ class Home extends React.Component {
     this.setState({query: this.player.value});
   }
 
+  refreshPage() {
+      window.location.reload();
+  }
+
   render (){
   return (
   	<div className="container">
       <div className="top">
-        <h1>
+        <h1 onClick={this.refreshPage}>
             Athlete Lookup <FaBasketballBall className="basketball-icon"/>
         </h1>
       </div>

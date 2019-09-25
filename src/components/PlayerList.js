@@ -25,13 +25,17 @@ class PlayerList extends React.Component {
 				else{
 					console.log(data.player);
 					this.setState({
-	              		players: data.player.slice(0,18),
+	              		players: data.player.slice(0,12),
 						emptyResults: false
 	            	});
 				}
           	});
   		}
   	}
+
+	viewMore () {
+		console.log("player button clicked.");
+	}
 
   	render() {
     	if (this.props.query && this.state.emptyResults === false) {
@@ -46,6 +50,7 @@ class PlayerList extends React.Component {
                 				<div className="player-name">
                   					{player.strPlayer === "" ? <p>N/A</p> : <p>{player.strPlayer}</p> }
                 				</div>
+								<button className="player-button" onClick={this.viewMore}>more details</button>
               				</div>
             			);
           			})}

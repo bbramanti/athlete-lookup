@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import axios from "axios";
 import person from '../blank.jpg';
 
@@ -33,10 +34,6 @@ class PlayerList extends React.Component {
   		}
   	}
 
-	viewMore () {
-		console.log("player button clicked.");
-	}
-
   	render() {
     	if (this.props.query && this.state.emptyResults === false) {
       		return (
@@ -50,7 +47,12 @@ class PlayerList extends React.Component {
                 				<div className="player-name">
                   					{player.strPlayer === "" ? <p>N/A</p> : <p>{player.strPlayer}</p> }
                 				</div>
-								<button className="player-button" onClick={this.viewMore}>more details</button>
+								<Link to={{
+									pathname: "/" + player.strPlayer.replace(/\s+/g, '-'),
+									state: {player: player}
+								}}>
+									<button className="player-button">more details</button>
+								</Link>
               				</div>
             			);
           			})}

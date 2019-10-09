@@ -95,6 +95,11 @@ input:focus {
     cursor: pointer;
 }
 
+.player-details{
+    text-align: left;
+    margin: 10px;
+}
+
 @media only screen and (max-width: 800px) {
     h1 {
         font-size: 8vw;
